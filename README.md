@@ -16,23 +16,27 @@
 
 `reboot`
 
-
 ##### Install node
 
 `sudo apt-get update`
 
 `sudo apt-get upgrade`
 
-*NOTE: You must install node version v5.12 for the dash to work. Instructions on how to install a specific version of node incoming...*
+*NOTE: You must install node version v5.12 for the dash to work.     ***NOT A GOOD IDEA ANYMORE, WE WILL SEE WHAT HAPPENS NOW***
+Instructions on how to install a specific version of node incoming...*
 
-# Installing Node.js 5.x
-`curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -`
+# Installing Node.js 8.x
+# First step is to get the correct deb
+
+`curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -`
+
+## Install Node.js 8.x LTS Carbon and npm:
+
 `sudo apt-get install -y nodejs`
 
-`sudo apt-get install npm`
+`sudo apt-get update&&sudo apt-get install -y npm`
 
-
-##### Install Chromium
+##### Install Chromium, IGNORE that it asks for the Jessie version here....
 
 `wget -qO - http://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo apt-key add -`
 
