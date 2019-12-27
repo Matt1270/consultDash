@@ -20,7 +20,21 @@ to help guide you through it.
 
 `sudo apt-get upgrade`
 
+# Install Nodejs, here version 13.x - See link for guide  https://github.com/nodesource/distributions/blob/master/README.md
+curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+
 *NOTE: You must install node version v5.12 for the dash to work. Instructions on how to install a specific version of node incoming...*
+https://serverjs.io/tutorials/getting-started/#install-node-js
+
+
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+
+nvm install node
+nvm use node
+nvm alias default node
+
 
 `sudo apt-get install nodejs npm`
 
