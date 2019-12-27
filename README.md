@@ -8,37 +8,43 @@
 
 `sudo raspi-config`
 
-`you might want to enable ssh access;`
-`enable ssh'
+# You might want to enable ssh access:
+Choose 05 - Interfacing Options
+Choose Enable SSH
 
-`choose advanced settings`
-`..then choose option 1 (expand file system)`
+choose 07 - Advanced Settings
+..then choose option A1 (expand file system)
 
-`reboot`
+Now reboot.
 
-##### Install node
+##### Update system.
+<i>At first boot, sometimes it is necessary to hit enter, before it will accept what you are writing :/</i>
 
-`sudo apt-get update`
+`$ sudo apt-get update -y&&sudo apt-get upgrade -y`
 
-`sudo apt-get upgrade`
+#### Instal Node.js and npm.
+Read the writing carefully on your Raspberry Pi circuit board to confirm it indicates something like “Raspberry Pi 4 Model B” or “Raspberry Pi 2 Model B”. If in doubt, run the following command in the terminal:
 
-# Installing Node.js & npm..
+$ uname -m
+If the result returned starts with “armv6”, you are running a Raspberry Pi based on the older ARMv6 chipset and the next Node.js installation step will not work; otherwise, you are ready for the next step.
 
-`curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -`
+`$ curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -`
 
-## Install Node.js 13.x LTS Carbon and npm:
+`$ sudo apt-get install -y nodejs`
 
-`sudo apt-get install -y nodejs`
+This command will check that you have the correct version:
+`$ node -v`
 
-`sudo apt-get update`
+Now check npm also:
+`$ npm -v`
 
 ##### Install Dash
 
-`git clone https://github.com/joachimth/consultDash.git`
+`$ cd ~/&&git clone https://github.com/joachimth/consultDash.git`
 
-`cd consultDash`
+`$ cd ~/consultDash`
 
-`npm install`
+`$ npm install`
 
 
 ##### Install script for mausberry circuit
@@ -46,12 +52,13 @@
 `http://mausberrycircuits.com/pages/car-setup`
 
 Open Menu > Preferences > Default applications for LXSession
-
 Add these two entries to Autostart
 
-`@/home/pi/consultDash/startScript.sh`
+The first one will start the nodejs server after final bootup.
+1. `@/home/pi/consultDash/startScript.sh`
 
-`@chromium-browser —kiosk --incognito file:///home/pi/consultDash/re-direct-page.html`
+The second will start the chromium kiosk for us to be able to show the goodness automatically.
+2. `@chromium-browser —kiosk --incognito file:///home/pi/consultDash/re-direct-page.html`
 
 
 ### Related guides
@@ -90,3 +97,8 @@ See link for install guide  https://github.com/nodesource/distributions/blob/mas
 
 https://serverjs.io
 Powerful server for Node.js that just works so you can focus on your awesome project
+
+
+## External Guides, used for reference
+https://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#install-node
+
