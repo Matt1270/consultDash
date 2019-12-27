@@ -1,42 +1,75 @@
 # Installing console dash on raspberry pi
 
-### This FORK is my personal test bed for my car install.
-### I have a RPI 2 with too many USB dongles, a 7" Touch screen (orig), and more to come..
+## This FORK is my personal test bed for my car install.
 
-##### If RPI is a fresh install you might need to expand your file system
-##### This is done on "newest" install of Raspbian from todays date. approx 1gb image. Official image..
+I have a RPI 2 with too many USB dongles, a 7" Touch screen (orig), and more to come..
+
+If RPI is a fresh install you might need to expand your file system
+
+This is done on "newest" install of Raspbian from todays date. approx 1gb image. Official image..
+
+
+##### Please check the following before continuing
+Read carefully on your Raspberry Pi circuit board.
+It has to indicate something like “Raspberry Pi 4 Model B” or “Raspberry Pi 2 Model B”.
+
+If in doubt, run the following command in the terminal:
+
+`$ uname -m`
+
+If the result returned starts with “armv6” this is NOT possible. Abort mission, sorry.
+
+If the result starts with "armv7" this IS possible, please proceed.
+
+
+##### Preparation of your Raspberry Pi.
+Please update your system now.
 
 `sudo raspi-config`
 
-# You might want to enable ssh access:
-Choose 05 - Interfacing Options
-Choose Enable SSH
+<i>You might want to enable ssh access
 
-choose 07 - Advanced Settings
-..then choose option A1 (expand file system)
+`Choose 05 - Interfacing Options`
 
-Now reboot.
+`Choose Enable SSH`</i>
+
+### Resize partitions.
+
+`Choose 07 - Advanced Settings`
+
+`..then choose option A1 (expand file system)`
+
+`Now reboot.`
+
 
 ##### Update system.
 <i>At first boot, sometimes it is necessary to hit enter, before it will accept what you are writing :/</i>
 
 `$ sudo apt-get update -y&&sudo apt-get upgrade -y`
 
+Now reboot, this must happen.
+`sudo reboot --reboot`
+
 #### Instal Node.js and npm.
-Read the writing carefully on your Raspberry Pi circuit board to confirm it indicates something like “Raspberry Pi 4 Model B” or “Raspberry Pi 2 Model B”. If in doubt, run the following command in the terminal:
 
-$ uname -m
-If the result returned starts with “armv6”, you are running a Raspberry Pi based on the older ARMv6 chipset and the next Node.js installation step will not work; otherwise, you are ready for the next step.
-
+Append latest deb as source.
 `$ curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -`
 
-`$ sudo apt-get install -y nodejs`
+point-rpi has to be removed also, just too be sure everything is clean.
+`$ sudo apt-get install -y nodejs&&sudo apt-get autoremove -y&&sudo apt-get upgrade -y`
+
 
 This command will check that you have the correct version:
+<i> I have node version v13.5.0</i>
+
 `$ node -v`
 
+
 Now check npm also:
+<i> I have npm version v6.13.4</i>
+
 `$ npm -v`
+
 
 ##### Install Dash
 
@@ -51,13 +84,17 @@ Now check npm also:
 
 `http://mausberrycircuits.com/pages/car-setup`
 
-Open Menu > Preferences > Default applications for LXSession
-Add these two entries to Autostart
+Open Menu > Preferences > Default applications for LXSession.
+
+Add these two entries to Autostart.
+
 
 The first one will start the nodejs server after final bootup.
+
 1. `@/home/pi/consultDash/startScript.sh`
 
 The second will start the chromium kiosk for us to be able to show the goodness automatically.
+
 2. `@chromium-browser —kiosk --incognito file:///home/pi/consultDash/re-direct-page.html`
 
 
