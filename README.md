@@ -22,11 +22,12 @@
 
 `sudo apt-get upgrade`
 
-*NOTE: You must install node version v5.12 for the dash to work.     ***NOT A GOOD IDEA ANYMORE, WE WILL SEE WHAT HAPPENS NOW***
-Instructions on how to install a specific version of node incoming...*
-
 # Installing Node.js 8.x
 # First step is to get the correct deb
+
+# Install Nodejs&npm, here version 13.x - See link for guide  https://github.com/nodesource/distributions/blob/master/README.md
+curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+sudo apt-get install -y nodejs
 
 `curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -`
 
