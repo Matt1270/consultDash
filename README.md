@@ -1,18 +1,20 @@
 # Installing console dash on raspberry pi
 
-### Video guide
-
-Instructions are below, but here is a [video guide](https://www.youtube.com/watch?v=5C9ypE6JUuY)
-to help guide you through it.
+### This FORK is my personal test bed for my car install.
+### I have a RPI 2 with too many USB dongles, a 7" Touch screen (orig), and more to come..
 
 ##### If RPI is a fresh install you might need to expand your file system
+##### This is done on "newest" install of Raspbian from todays date. approx 1gb image. Official image..
 
 `sudo raspi-config`
 
-`choose option 1 (expand file system)`
+`you might want to enable ssh access;`
+`enable ssh'
+
+`choose advanced settings`
+`..then choose option 1 (expand file system)`
 
 `reboot`
-
 
 ##### Install node
 
@@ -20,26 +22,22 @@ to help guide you through it.
 
 `sudo apt-get upgrade`
 
-# Install Nodejs, here version 13.x - See link for guide  https://github.com/nodesource/distributions/blob/master/README.md
+# Installing Node.js 8.x
+# First step is to get the correct deb
+
+# Install Nodejs&npm, here version 13.x - See link for guide  https://github.com/nodesource/distributions/blob/master/README.md
 curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
+`curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -`
 
-*NOTE: You must install node version v5.12 for the dash to work. Instructions on how to install a specific version of node incoming...*
-https://serverjs.io/tutorials/getting-started/#install-node-js
+## Install Node.js 8.x LTS Carbon and npm:
 
+`sudo apt-get install -y nodejs`
 
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+`sudo apt-get update&&sudo apt-get install -y npm`
 
-nvm install node
-nvm use node
-nvm alias default node
-
-
-`sudo apt-get install nodejs npm`
-
-
-##### Install Chromium
+##### Install Chromium, IGNORE that it asks for the Jessie version here....
 
 `wget -qO - http://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo apt-key add -`
 
@@ -51,7 +49,7 @@ nvm alias default node
 
 ##### Install Dash
 
-`git clone https://github.com/gregsqueeb/consultDash.git`
+`git clone https://github.com/joachimth/consultDash.git`
 
 `cd consultDash`
 
@@ -82,12 +80,8 @@ Add these two entries to Autostart
 - [Raspberry Pi 3](https://www.adafruit.com/products/3055)
 - [Touch screen](https://www.adafruit.com/products/2718)
 - [Mausberry Circuit Power Supply](http://mausberry-circuits.myshopify.com/collections/car-power-supply-switches/products/3a-car-supply-switch)
-- [USB Consult cable](http://www.ebay.com/itm/14-Pin-Consult-II-OBD-DDL-USB-Interface-Diagnostic-Scanner-Tool-For-Nissan-Z32-/291644411718?hash=item43e75c8f46:g:bOkAAOSwQM9UZfVB&item=291644411718&vxp=mtr) (I am pretty sure this will work but I have not tested it yet. Let me know if you get it and it works)
 
-or
-
-- [Consult cable](http://www.ebay.com/itm/Consult-Auto-Car-Diagnostic-Interface-Tool-14-Pin-Scanner-Scan-Cable-for-Nissan-/261194185645?hash=item3cd062fbad:g:EdIAAOxyB0VRrvEt&item=261194185645&vxp=mtr)
-- [Serial to USB cable](http://www.ebay.com/itm/RS232-RS-232-Serial-to-USB-2-0-PL2303-Cable-Adapter-Converter-for-Win-7-8-10-/301675657589?hash=item463d453975:g:wRQAAOSwHnFVkj3Z)
+- Some USB Tool....
 
 # How to run for development
 
