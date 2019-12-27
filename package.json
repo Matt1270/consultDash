@@ -11,12 +11,10 @@
     "express": "4.9.x",
     "socket.io": "latest",
     "classnames": "latest",
-    "serialport": "latest",
+    "serialport": "latest"
   },
   "scripts": {
     "start": "node server.js",
     "dev": "NODE_ENV=development node server.js"
-  },
-  "author": "EveryOne",
-  "license": "MIT"
+  }
 }
