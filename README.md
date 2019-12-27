@@ -56,7 +56,7 @@ Append latest deb as source.
 `$ curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -`
 
 point-rpi has to be removed also, just too be sure everything is clean.
-`$ sudo apt-get install -y nodejs&&sudo apt-get autoremove -y&&sudo apt-get upgrade -y`
+`$ sudo apt-get install -y unclutter,nodejs&&sudo apt-get autoremove -y&&sudo apt-get upgrade -y`
 
 
 This command will check that you have the correct version:
@@ -84,10 +84,24 @@ Now check npm also:
 
 `http://mausberrycircuits.com/pages/car-setup`
 
-Open Menu > Preferences > Default applications for LXSession.
+Create this file:
+<i>~/.xinitrc</i>
 
-Add these two entries to Autostart.
+'
+#!/bin/sh
+xset -dpms
+xset s off
+xset s noblank
 
+unclutter &
+chromium-browser /path/to/your/file.html --window-size=800,480 --start-fullscreen --kiosk --incognito --noerrdialogs --disable-translate --no-first-run --fast --fast-start --disable-infobars --disable-features=TranslateUI --disk-cache-dir=/dev/null
+'
+
+#Step 2.
+in .bash_profile add this at the end.
+if (-z $DISPLAY) && ($(tty) = /dev/tty1); then
+    startx
+fi
 
 The first one will start the nodejs server after final bootup.
 
@@ -138,4 +152,4 @@ Powerful server for Node.js that just works so you can focus on your awesome pro
 
 ## External Guides, used for reference
 https://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#install-node
-
+https://www.sylvaindurand.org/launch-chromium-in-kiosk-mode/
