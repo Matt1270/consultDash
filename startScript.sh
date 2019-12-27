@@ -1,2 +1,2 @@
 cd /home/pi/consultDash/
-npm start
+npm run dev
