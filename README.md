@@ -22,30 +22,15 @@
 
 `sudo apt-get upgrade`
 
-# Installing Node.js 8.x
-# First step is to get the correct deb
+# Installing Node.js & npm..
 
-# Install Nodejs&npm, here version 13.x - See link for guide  https://github.com/nodesource/distributions/blob/master/README.md
-curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
-sudo apt-get install -y nodejs
+`curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -`
 
-`curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -`
-
-## Install Node.js 8.x LTS Carbon and npm:
+## Install Node.js 13.x LTS Carbon and npm:
 
 `sudo apt-get install -y nodejs`
 
-`sudo apt-get update&&sudo apt-get install -y npm`
-
-##### Install Chromium, IGNORE that it asks for the Jessie version here....
-
-`wget -qO - http://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo apt-key add -`
-
-`echo "deb http://dl.bintray.com/kusti8/chromium-rpi jessie main" | sudo tee -a /etc/apt/sources.list`
-
 `sudo apt-get update`
-
-`sudo apt-get install chromium-browser rpi-youtube -y`
 
 ##### Install Dash
 
@@ -70,10 +55,7 @@ Add these two entries to Autostart
 
 
 ### Related guides
-
-- [How to install a consult port](https://youtu.be/6Vd9oKWORPs?t=164)
-- [How to install the OS on your Raspberry Pi](https://www.raspberrypi.org/learning/software-guide/quickstart/)
-- [How to guide on installing that dash and power supply software](https://github.com/gregsqueeb/consultDash)
+- [How to install the OS on your Raspberry Pi] (https://www.raspberrypi.org/learning/software-guide/quickstart/)
 
 ### Suggested hardware
 
@@ -88,3 +70,23 @@ Add these two entries to Autostart
 This will loop through MPH RPM and Temp so you can style things without being connected to a car :)
 
 `npm run dev`
+
+
+
+
+
+# External references
+https://socket.io  - Real time engine
+
+https://serialport.io - For using serialports via Node.js
+Node.js package to access serial ports for Linux, OSX and Windows.
+
+https://expressjs.com - Express Fast simple web framework for Node.js
+
+https://nodejs.org/  - Node.js Javascript runtime built on Chrome V8 JS engine
+As an asynchronous event-driven JavaScript runtime, Node.js is designed to build scalable network applications.
+
+See link for install guide  https://github.com/nodesource/distributions/blob/master/README.md
+
+https://serverjs.io
+Powerful server for Node.js that just works so you can focus on your awesome project
