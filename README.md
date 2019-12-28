@@ -99,9 +99,10 @@ chromium-browser /path/to/your/file.html --window-size=800,480 --start-fullscree
 
 #Step 2.
 in .bash_profile add this at the end.
-if (-z $DISPLAY) && ($(tty) = /dev/tty1); then
-    startx
-fi
+
+`if (-z $DISPLAY) && ($(tty) = /dev/tty1); then
+exec startx
+fi`
 
 The first one will start the nodejs server after final bootup.
 
@@ -129,6 +130,9 @@ This will loop through MPH RPM and Temp so you can style things without being co
 
 `npm run dev`
 
+This will run "normal" operations.
+
+`npm start`
 
 
 
