@@ -80,37 +80,52 @@ Now check npm also:
 `$ npm install`
 
 
-##### Install script for mausberry circuit
-
-`http://mausberrycircuits.com/pages/car-setup`
+##### Auto launch at every bootup.
 
 Create this file:
-<i>~/.xinitrc</i>
 
-'
+<i> `~` equals to your home directory, so `/home/pi` in a "normal" fresh install</i>
+
+`<i>~/.xinitrc</i>`
+
+`
 #!/bin/sh
-xset -dpms
-xset s off
-xset s noblank
 
-unclutter &
-chromium-browser /path/to/your/file.html --window-size=800,480 --start-fullscreen --kiosk --incognito --noerrdialogs --disable-translate --no-first-run --fast --fast-start --disable-infobars --disable-features=TranslateUI --disk-cache-dir=/dev/null
-'
+xset -dpms
+
+xset s off
+
+xset s noblank`
+
+
+`unclutter &`
+
+`chromium-browser /home/pi/consultDash/re-direct-page.html --window-size=800,480 --start-fullscreen --kiosk --incognito --noerrdialogs --disable-translate --no-first-run --fast --fast-start --disable-infobars --disable-features=TranslateUI --disk-cache-dir=/dev/null
+`
+
 
 #Step 2.
-in .bash_profile add this at the end.
+
+in .bash_profile at the end, add this.
 
 `if (-z $DISPLAY) && ($(tty) = /dev/tty1); then
 exec startx
 fi`
 
-The first one will start the nodejs server after final bootup.
 
-1. `@/home/pi/consultDash/startScript.sh`
+//The first one will start the nodejs server after final bootup.
 
-The second will start the chromium kiosk for us to be able to show the goodness automatically.
+//1. `@/home/pi/consultDash/startScript.sh`
 
-2. `@chromium-browser —kiosk --incognito file:///home/pi/consultDash/re-direct-page.html`
+//The second will start the chromium kiosk for us to be able to show the goodness automatically.
+
+//2. `@chromium-browser —kiosk --incognito file:///home/pi/consultDash/re-direct-page.html`
+
+
+##### Install script for mausberry circuit
+
+`http://mausberrycircuits.com/pages/car-setup`
+
 
 
 ### Related guides
