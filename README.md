@@ -50,26 +50,36 @@ Please update your system now.
 Now reboot, this must happen.
 `sudo reboot --reboot`
 
+#### Install Xorg server, no need for window managers.
+`$ sudo apt-get install xorg -y`
+`$ sudo apt-get install -y unclutter`
+
 #### Instal Node.js and npm.
 
 Append latest deb as source.
+
 `$ curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -`
 
 point-rpi has to be removed also, just too be sure everything is clean.
-`$ sudo apt-get install -y unclutter,nodejs&&sudo apt-get autoremove -y&&sudo apt-get upgrade -y`
 
+`$ sudo apt-get autoremove -y`
+
+`$ sudo apt-get install -y nodejs`
+
+`$ sudo apt-get upgrade -y`
 
 This command will check that you have the correct version:
+
 <i> I have node version v13.5.0</i>
 
 `$ node -v`
 
 
 Now check npm also:
+
 <i> I have npm version v6.13.4</i>
 
 `$ npm -v`
-
 
 ##### Install Dash
 
@@ -84,29 +94,14 @@ Now check npm also:
 
 Create this file:
 
-<i> `~` equals to your home directory, so `/home/pi` in a "normal" fresh install</i>
+<i> `~` equals to your home directory, so `/home/pi` if a standard Raspberry PI install</i>
 
-`<i>~/.xinitrc</i>`
+#Step 1.
 
-`
-#!/bin/sh
+in .profile at the end, add this.
 
-xset -dpms
+`$ echo 'exec /home/pi/consultDash/startScript.sh'>>~/.profile`
 
-xset s off
-
-xset s noblank`
-
-
-`unclutter &`
-
-`chromium-browser /home/pi/consultDash/re-direct-page.html --window-size=800,480 --start-fullscreen --kiosk --incognito --noerrdialogs --disable-translate --no-first-run --fast --fast-start --disable-infobars --disable-features=TranslateUI --disk-cache-dir=/dev/null
-`
-
-
-#Step 2.
-
-in .bash_profile at the end, add this.
 
 `if (-z $DISPLAY) && ($(tty) = /dev/tty1); then
 exec startx
@@ -115,7 +110,7 @@ fi`
 
 //The first one will start the nodejs server after final bootup.
 
-//1. `@/home/pi/consultDash/startScript.sh`
+//1. `/home/pi/consultDash/startScript.sh`
 
 //The second will start the chromium kiosk for us to be able to show the goodness automatically.
 
