@@ -3,6 +3,11 @@
 # In other versions, this is called from ~/.profile
 # This means that it will be run before bash or zsh or whatever is called..
 
+## Missing cleanup..
+## This script is run by .bashrc
+## Startx is run after this script in .bashrc only because this script needs root..but does it..
+##
+
 ROOT_UID=0   # Only users with $UID 0 have root privileges.
 E_NOTROOT=65
 E_NOPARAMS=66
@@ -38,14 +43,17 @@ sleep 2
 
 echo "# Starting Node server for accquiring data"
 echo ""
+
 cd /home/pi/consultDash
-npm install > $NPM_LOG_FILE
+#npm install #> $NPM_LOG_FILE
 npm run dev & #> $NPM_LOG_FILE
+
+sleep 10
 
 #echo 'cd /home/pi/consultDash'>>$GUI_INIT_FILE
 #echo 'npm run dev >'"$NPM_LOG_FILE">>$GUI_INIT_FILE
 
-echo 'echo "# We are past starting the Node server now.."'>>$GUI_INIT_FILE
+#echo 'echo "# We are past starting the Node server now.."'>>$GUI_INIT_FILE
 echo 'xset -dpms'>>$GUI_INIT_FILE
 echo 'xset s off'>>$GUI_INIT_FILE
 echo 'xset s noblank'>>$GUI_INIT_FILE
@@ -62,5 +70,5 @@ echo 'chromium-browser /home/pi/consultDash/re-direct-page.html --window-size=80
 #echo '    sleep 30'>>$GUI_INIT_FILE
 #echo 'done'>>$GUI_INIT_FILE
 #echo 'sudo /sbin/shutdown -r now'>>$GUI_INIT_FILE
-
-startx
+#sleep 5
+#startx &
